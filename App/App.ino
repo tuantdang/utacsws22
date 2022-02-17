@@ -164,12 +164,10 @@ void loop() {
           // Delay between two consecutive measurements
           //delay(250);
 
-          client.print("Heart rate: ");
-          client.print(heart_rate);
-          client.println("<br />");
-          client.print("SpO2 level: ");
-          client.print(spo2_level);          
-
+          client.print("<center><h1 style=\"background-color:powderblue;\">Welcome to Computer Science @ UT Arlington</h1></center>");
+          client.print("<center><h2 style=\"background-color:#E6B0C5;\">[CPS-Health] Building Cyber-Physical Systems for Healthcare</h2></center>");
+          client.print("<center><h3 style=\"background-color:#E6B0C5;\"> Heart Rate : "); client.print(heart_rate); client.print("</h3></center>");
+          client.print("<center><h3 style=\"background-color:#B0C5E6;\"> SpO2       : ");  client.print(spo2_level); client.print("</h3></center>");          
           client.println("</html>");
           break;
         }
