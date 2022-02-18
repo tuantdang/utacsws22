@@ -3,7 +3,7 @@
 #include "arduino_secrets.h" 
 
 char ssid[] = "Jerry";        // your network SSID (name)
-char pass[] = "";             // your network password
+char pass[] = "46840574";             // your network password
 int keyIndex = 0;             // your network key Index number (needed only for WEP)
 
 int led =  LED_BUILTIN;
