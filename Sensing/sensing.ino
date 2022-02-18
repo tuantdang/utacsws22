@@ -8,6 +8,7 @@ int stat = 100;
 SparkFun_Bio_Sensor_Hub bioHub(resPin, mfioPin); 
 bioData body;  
 
+// Function inferring values of sensor's status to spoken language
 void check_stat(int stat) {
     if(stat == 0)
         Serial.println("Sensor configured successfully!");
@@ -27,6 +28,7 @@ void check_stat(int stat) {
         Serial.println("Too many finger's vibration.");
 }
 
+// Function setting-up the wires for sensors and Arduino communication
 void setup(){
     Serial.begin(115200);
 
@@ -52,16 +54,21 @@ void setup(){
     delay(4000); 
 }
 
+// Function iteratively sensing biometrics
 void loop(){
+    // Load bio-data into "body" variable
     body = bioHub.readBpm();
-
+    
+    // Check sensor's status
     stat = body.extStatus;
     check_stat(stat);
     
+    // Print heart rate and SpO2 level data
     Serial.print("Heartrate: ");
     Serial.println(body.heartRate);  
     Serial.print("Oxygen: ");
     Serial.println(body.oxygen); 
     
+    // Delay between two consecutive measurements
     delay(250); 
 }
