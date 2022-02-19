@@ -6,17 +6,18 @@
 #define LOW_HEARTRATE 60
 #define HIGH_HEARTRATE 100
 #define LOW_SPO2LEVEL 95
+#define WIRELESS_OPT 1
 
-int stat = 100;
-
-SparkFun_Bio_Sensor_Hub bioHub(resPin, mfioPin);
-bioData body;
-
+int resPin = 4;                   // reset pin (optional)
+int mfioPin = 5;                  // MFIO pin (optional)
+int stat = 100;                   // init sensor's status
 char ssid[] = "Jerry";            // your network SSID (name)
 char pass[] = "46840574";         // your network password
 int keyIndex = 0;                 // your network key Index number (needed only for WEP)
-
 int status = WL_IDLE_STATUS;
+
+SparkFun_Bio_Sensor_Hub bioHub(resPin, mfioPin);
+bioData body;
 WiFiServer server(80);
 
 void printWiFiStatus() {
@@ -66,9 +67,14 @@ void setup() {
   // Initialize serial and wait for port to open:
   Serial.begin(9600);
   
-  //while (!Serial) {
-    //; // Wait for serial port to connect. Needed for native USB port only
-  //}
+  // Initailze the Arduino's LED
+  pinMode(LED_BUILTIN, OUTPUT);
+  
+  if (WIRELESS_OPT == 0) {
+    while (!Serial) {
+      ; // Wait for serial port to connect. Needed for native USB port only
+    }
+  }
 
   // Check for the presence of the shield:
   if (WiFi.status() == WL_NO_SHIELD) {
@@ -113,11 +119,17 @@ void setup() {
 
   Serial.println("Loading up the buffer with data....");
   delay(4000);
-
+  
   pinInit();
 }
 
 void loop() {
+  // LED iteratively blinking for 1 second and off 
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(1000);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(1000);                       // wait for a second
+  
   // Listen for incoming clients
   WiFiClient client = server.available();
   
