@@ -68,9 +68,9 @@ void setup() {
   // Initialize serial and wait for port to open:
   Serial.begin(9600);
   
-  while (!Serial) {
-    ; // Wait for serial port to connect. Needed for native USB port only
-  }
+  //while (!Serial) {
+    //; // Wait for serial port to connect. Needed for native USB port only
+  //}
 
   // Check for the presence of the shield:
   if (WiFi.status() == WL_NO_SHIELD) {
