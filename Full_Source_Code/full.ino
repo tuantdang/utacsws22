@@ -7,8 +7,6 @@
 #define HIGH_HEARTRATE 100
 #define LOW_SPO2LEVEL 95
 
-int resPin = 4;
-int mfioPin = 5;
 int stat = 100;
 
 SparkFun_Bio_Sensor_Hub bioHub(resPin, mfioPin);
