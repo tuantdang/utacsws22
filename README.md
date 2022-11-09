@@ -2,4 +2,4 @@
 
 # Building a Smart Personal Medical System for Continuous Heart Rate and Oxygen Saturation Monitoring
 
-(ourcs22.png)
+![Alt text](Images/ourcs22.png)
